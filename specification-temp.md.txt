@@ -1,0 +1,10 @@
+Walk me through the process of creating a detailed AI prompt for making a professional portfolio website. Only ask 1 question per message. Use the following as a starting point.
+
+- Goal: Professional portfolio website for an internship to be judged
+- Primary audience: Judges (Aged 20-40) who work in the software engineering field
+- Tone & voice: Concise, friendly, professional
+- Visual direction: Clean, professional, modern
+- Primary color palette:
+  - Primary: #3A405A
+  - Accent: #B7B5E4
+  - Neutral: #C8C6AF
