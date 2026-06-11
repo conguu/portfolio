@@ -4,8 +4,9 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Conner's Portfolio</title>
-        <link rel="stylesheet" href="styles.css">
-        <script src="main.js"></script>
+        <link rel="stylesheet" href="stylesheets/navbar.css">
+        <link rel="stylesheet" href="stylesheets/styles.css">
+        <script src="js/nav.js"></script>
     </head>
 
     <body>
@@ -13,30 +14,22 @@
             <div class="nav-content">
                 <div class="nav-left">
                     <a href="#">Conner's Portfolio</a>
+                    <div class="nav-seperator"></div>
+                </div>
+
+                <div id="nav-menu">
+                    <ul>
+                        <li><a href="#"><img class="nav-icon" src="assets/icons/shapes.svg">Projects</a></li>
+                        <li><a href="#"><img class="nav-icon" src="assets/icons/user.svg">About Me</a></li>
+                        <li><a href="#"><img class="nav-icon" src="assets/icons/message.svg">Contact</a></li>
+                    </ul>
                 </div>
 
                 <div class="nav-right">
-                    <button>
-                        <img class="nav-icon" src="assets/icons/sun.svg">
-                    </button>
-
+                    <button><img class="nav-icon" src="assets/icons/sun.svg"></button>
                     <button id="nav-toggle" aria-controls="nav-menu" aria-expanded="false">
                         <img class="nav-icon" src="assets/icons/menu.svg">
                     </button>
-
-                    <div id="nav-menu">
-                        <ul>
-                            <li>
-                                <a href="#"><img class="nav-icon" src="assets/icons/shapes.svg">Projects</a>
-                            </li>
-                            <li>
-                                <a href="#"><img class="nav-icon" src="assets/icons/user.svg">About Me</a>
-                            </li>
-                            <li>
-                                <a href="#"><img class="nav-icon" src="assets/icons/message.svg">Contact</a>
-                            </li>
-                        </ul>
-                    </div>
                 </div>
             </div>
         </nav>
