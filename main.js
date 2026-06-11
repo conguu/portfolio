@@ -1,30 +1,35 @@
 document.addEventListener('DOMContentLoaded', () => {
     const toggle = document.getElementById('nav-toggle');
-    const buttons = document.getElementById('nav-buttons');
-    const MOBILE_BREAKPOINT = 767;
+    const menu = document.getElementById('nav-menu');
+    if (!toggle || !menu) return;
 
-    toggle.addEventListener('click', () => {
-        const isClosed = buttons.classList.contains('closed');
-        buttons.classList.toggle('closed', !isClosed);
-        buttons.classList.toggle('open', isClosed);
-        toggle.setAttribute('aria-expanded', String(isClosed));
-    });
+    if (window.innerWidth < 767) {
+        menu.style.maxHeight = '0';
+        menu.style.opacity = '0';
 
-    window.addEventListener('resize', () => {
-        const isDesktop = window.innerWidth > MOBILE_BREAKPOINT;
-
-        if (isDesktop) {
-            buttons.classList.remove('open', 'closed');
-            toggle.setAttribute('aria-expanded', 'false');
-        } else {
-            buttons.classList.remove('open');
-            buttons.classList.add('closed');
-            toggle.setAttribute('aria-expanded', 'false');
+        function onTransitionEnd(e) {
+            if (e.propertyName === 'max-height') {
+                if (toggle.getAttribute('aria-expanded') === 'true') menu.style.maxHeight = '';
+                menu.removeEventListener('transitionend', onTransitionEnd);
+            }
         }
-    });
 
-    const isDesktop = window.innerWidth > MOBILE_BREAKPOINT;
-    if (!isDesktop) {
-        buttons.classList.add('closed');
+        toggle.addEventListener('click', () => {
+            const expanded = toggle.getAttribute('aria-expanded') === 'true';
+
+            if (expanded) {
+                menu.style.maxHeight = '200px';
+                requestAnimationFrame(() => {
+                    menu.style.maxHeight = '0';
+                    menu.style.opacity = '0';
+                });
+                toggle.setAttribute('aria-expanded', 'false');
+            } else {
+                menu.style.maxHeight = '200px';
+                menu.style.opacity = '1';
+                toggle.setAttribute('aria-expanded', 'true');
+                menu.addEventListener('transitionend', onTransitionEnd);
+            }
+        });
     }
 });
