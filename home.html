@@ -3,37 +3,18 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Conner's Portfolio</title>
-        <link rel="stylesheet" href="stylesheets/navbar.css">
+        <title>Home - Conner's Portfolio</title>
         <link rel="stylesheet" href="stylesheets/styles.css">
-        <script src="js/nav.js"></script>
+        <script src="js/utils.js"></script>
+        <script src="js/home.js"></script>
     </head>
 
     <body>
-        <nav>
-            <div class="nav-content">
-                <div class="nav-left">
-                    <a href="#">Conner's Portfolio</a>
-                    <div class="nav-seperator"></div>
-                </div>
+        <div id="caseSprite" class="sprite"><img src="assets/case.svg"></div>
 
-                <div id="nav-menu">
-                    <ul>
-                        <li><a href="#"><img class="nav-icon" src="assets/icons/shapes.svg">Projects</a></li>
-                        <li><a href="#"><img class="nav-icon" src="assets/icons/user.svg">About Me</a></li>
-                        <li><a href="#"><img class="nav-icon" src="assets/icons/message.svg">Contact</a></li>
-                    </ul>
-                </div>
-
-                <div class="nav-right">
-                    <button><img class="nav-icon" src="assets/icons/sun.svg"></button>
-                    <button id="nav-toggle" aria-controls="nav-menu" aria-expanded="false">
-                        <img class="nav-icon" src="assets/icons/menu.svg">
-                    </button>
-                </div>
-            </div>
-        </nav>
-
-
+        <div id="cpuSprite" class="sprite draggable"><img src="assets/cpu.svg"></div>
+        <div id="gpuSprite" class="sprite draggable"><img src="assets/gpu.svg"></div>
+        <div id="moboSprite" class="sprite draggable"><img src="assets/mobo.svg"></div>
+        <div id="psuSprite" class="sprite draggable"><img src="assets/psu.svg"></div>
     </body>
 </html>
