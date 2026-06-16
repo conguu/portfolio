@@ -1,22 +1,21 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const caseSprite = document.getElementById('caseSprite');
-    const cpuSprite = document.getElementById('cpuSprite');
-    const gpuSprite = document.getElementById('gpuSprite');
-    const moboSprite = document.getElementById('moboSprite');
-    const psuuSprite = document.getElementById('psuSprite');
+    const caseSide = document.getElementById('caseSide');
+    const cpu = document.getElementById('cpu');
+    const gpu = document.getElementById('gpu');
+    const mobo = document.getElementById('mobo');
+    const psu = document.getElementById('psu');
 
-    setPosition(caseSprite, "50%", "50%");
-    setSize(caseSprite, "75%", "75%");
+    setPosition(caseSide, "50%", "50%");
+    setSize(caseSide, "75%");
 
-    setSize(cpuSprite, "20%");
-    setSize(gpuSprite, "50%");
-    setSize(moboSprite, "50%");
-    setSize(psuuSprite, "50%");
+    setSize(cpu, "20%");
+    setSize(gpu, "50%");
+    setSize(mobo, "50%");
+    setSize(psu, "50%");
 
     const draggableElements = document.querySelectorAll('.draggable');
 
     draggableElements.forEach(element => {
-        console.log("Click detected on:", element.id);
         let isDragging = false;
         let offsetX = 0;
         let offsetY = 0;
