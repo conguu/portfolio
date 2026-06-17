@@ -1,1 +1,8 @@
 # portfolio
+
+(maybe shrink to one html page so it's like a full game)
+
+1. User builds pc
+2. Once built, redirects to power.html for the user to turn on the pc
+3. When clicking power button, it redirects to bios.html and starts a boot animation that switches to a bios screen where you can change site settings like dark mode/light mode or other accessibility settings
+4. Once finished, user presses the save & exit button which redirects to home.html

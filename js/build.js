@@ -5,14 +5,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const mobo = document.getElementById('mobo');
     const psu = document.getElementById('psu');
 
-    setPosition(caseSide, "50%", "50%");
-    setSize(caseSide, "75%");
-
-    setSize(cpu, "20%");
-    setSize(gpu, "50%");
-    setSize(mobo, "50%");
-    setSize(psu, "50%");
-
     const draggableElements = document.querySelectorAll('.draggable');
 
     draggableElements.forEach(element => {
