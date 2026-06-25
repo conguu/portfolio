@@ -1,0 +1,35 @@
+#caseSide,
+#cpu,
+#gpu,
+#mobo,
+#psu {
+    height: auto;
+}
+
+#caseSide, .caseFans {
+    width: 90%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.caseFans {
+    position: absolute;
+    z-index: 5;
+}
+
+#cpu {
+    width: 20%;
+}
+
+#gpu {
+    width: 50%;
+}
+
+#mobo {
+    width: 50%;
+}
+
+#psu {
+    width: 50%;
+}
