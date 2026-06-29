@@ -8,6 +8,7 @@
 
 #caseSide, .caseFans {
     width: 90%;
+    max-width: 650px;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
@@ -30,6 +31,7 @@
 #cpu {
     width: 8%;
     z-index: 2;
+    max-width: 50px;
 }
 
 #gpu {
