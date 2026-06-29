@@ -27,7 +27,7 @@ function createDragZone(partId) {
 		zone.style.top = "50%";
 		zone.style.left = "7%";
 	} else if (partId === "mobo") {
-		zone.style.top = "15%";
+		zone.style.top = "13%";
 		zone.style.left = "7%";
 	} else if (partId === "psu") {
 	}
@@ -74,10 +74,13 @@ draggableElements.forEach((element) => {
 			const elRect = element.getBoundingClientRect();
 			const zoneRect = zone.getBoundingClientRect();
 
-			if (elRect.left >= zoneRect.left && elRect.top >= zoneRect.top && elRect.right <= zoneRect.right && elRect.bottom <= zoneRect.bottom) {
+			const elCenterX = elRect.left + elRect.width / 2;
+			const elCenterY = elRect.top + elRect.height / 2;
+
+			if (elCenterX >= zoneRect.left && elCenterX <= zoneRect.right && elCenterY >= zoneRect.top && elCenterY <= zoneRect.bottom) {
 				element.style.left = `${zoneRect.left + 5}px`;
 				element.style.top = `${zoneRect.top + 5}px`;
-				element.dataset.snapped = "true"; // <-- set flag instead
+				element.dataset.snapped = "true";
 			}
 		}
 	});

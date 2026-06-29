@@ -30,21 +30,24 @@
 
 #cpu {
     width: 8%;
+    max-width: 55px;
     z-index: 2;
-    max-width: 50px;
 }
 
 #gpu {
-    width: 60%;
+    width: 65%;
+    max-width: 450px;
     z-index: 3;
 }
 
 #mobo {
     width: 50%;
+    max-width: 350px;
     z-index: 1;
 }
 
 #psu {
     width: 40%;
+    max-width: 275px;
     z-index: 1;
 }
