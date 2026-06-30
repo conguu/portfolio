@@ -6,5 +6,4 @@ Steps:
 
 
 Suggestions:
-- Make rock paper scissor and spotify playlist projects
 - Add a "press enter" to skip bios

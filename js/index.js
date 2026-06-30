@@ -8,6 +8,7 @@ mobo.zIndex = 1;
 const psu = document.getElementById("psu");
 psu.zIndex = 1;
 
+let installed = [];
 
 let moboPlaced = false;
 const draggableElements = document.querySelectorAll(".draggable");
@@ -21,21 +22,23 @@ function createDragZone(partId) {
 	zone.style.width = getComputedStyle(part).width;
 	zone.style.height = getComputedStyle(part).height;
 
+	const caseRect = caseSide.getBoundingClientRect();
+
 	if (partId === "cpu") {
-		zone.style.top = "23%";
-		zone.style.left = "34%";
+		zone.style.top = `${caseRect.top + caseRect.height * 0.195}px`;
+		zone.style.left = `${caseRect.left + caseRect.width * 0.385}px`;
 	} else if (partId === "gpu") {
-		zone.style.top = "42%";
-		zone.style.left = "4%";
+		zone.style.top = `${caseRect.top + caseRect.height * 0.40}px`;
+		zone.style.left = `${caseRect.left + caseRect.width * 0.02}px`;
 	} else if (partId === "mobo") {
-		zone.style.top = "8%";
-		zone.style.left = "7%";
+		zone.style.top = `${caseRect.top + caseRect.height * 0.03}px`;
+		zone.style.left = `${caseRect.left + caseRect.width * 0.06}px`;
 	} else if (partId === "psu") {
-		zone.style.top = "69%";
-		zone.style.left = "6%";
+		zone.style.top = `${caseRect.top + caseRect.height * 0.72}px`;
+		zone.style.left = `${caseRect.left + caseRect.width * 0.03}px`;
 	}
 
-	caseSide.appendChild(zone);
+	document.body.appendChild(zone);
 	return zone;
 }
 
@@ -55,6 +58,7 @@ draggableElements.forEach((element) => {
 		offsetY = e.clientY - rect.top;
 
 		element.style.zIndex = 4;
+		zone.classList.add("shown");
 	});
 
 	document.addEventListener("mousemove", (e) => {
@@ -73,6 +77,7 @@ draggableElements.forEach((element) => {
 
 		if (isDragging) {
 			isDragging = false;
+			zone.classList.remove("shown");
 
 			const elRect = element.getBoundingClientRect();
 			const zoneRect = zone.getBoundingClientRect();
@@ -90,6 +95,23 @@ draggableElements.forEach((element) => {
 
 					if (element.id === "mobo") {
 						moboPlaced = true;
+					}
+
+					if (element.id === "cpu") {
+						mobo.innerHTML = `<img src="assets/mobo-full.svg" />`;
+						cpu.style.visibility = "hidden";
+					}
+
+					installed.push(element.id);
+
+					if (installed.length === 4) {
+						setTimeout(() => {
+							document.querySelector("#overlay").style.visiblity = "visible";
+							document.querySelector("#overlay").style.opacity = 1;
+							setTimeout(() => {
+								window.location.replace("power.html");
+							}, 500);
+						}, 500);
 					}
 				}
 			}
