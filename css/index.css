@@ -6,7 +6,9 @@
     height: auto;
 }
 
-#caseSide, .caseFans {
+#caseSide,
+.caseFans {
+    z-index: 0;
     width: 90%;
     max-width: 650px;
     left: 50%;
@@ -16,16 +18,21 @@
 
 .caseFans {
     position: absolute;
-    z-index: 5;
+    z-index: 3 !important;
+}
+
+img {
+    width: 100%;
+    height: 100%;
 }
 
 .drag-zone {
     position: absolute;
-    border: 2px dashed rgba(255, 255, 255, 0.3);
+    border: 2px dashed rgba(255, 255, 255, 0.6);
     border-radius: 4px;
     pointer-events: none;
     box-sizing: border-box;
-    z-index:10;
+    z-index: 20 !important;
 }
 
 #cpu {

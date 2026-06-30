@@ -8,6 +8,8 @@ mobo.zIndex = 1;
 const psu = document.getElementById("psu");
 psu.zIndex = 1;
 
+
+let moboPlaced = false;
 const draggableElements = document.querySelectorAll(".draggable");
 
 function createDragZone(partId) {
@@ -16,20 +18,21 @@ function createDragZone(partId) {
 	zone.dataset.part = partId;
 
 	const part = document.getElementById(partId);
-	zone.style.width = `calc(${getComputedStyle(part).width} + 10px)`;
-	zone.style.height = `calc(${getComputedStyle(part).height} + 10px)`;
-
+	zone.style.width = getComputedStyle(part).width;
+	zone.style.height = getComputedStyle(part).height;
 
 	if (partId === "cpu") {
-		zone.style.top = "30%";
-		zone.style.left = "35%";
+		zone.style.top = "23%";
+		zone.style.left = "34%";
 	} else if (partId === "gpu") {
-		zone.style.top = "50%";
-		zone.style.left = "7%";
+		zone.style.top = "42%";
+		zone.style.left = "4%";
 	} else if (partId === "mobo") {
-		zone.style.top = "13%";
+		zone.style.top = "8%";
 		zone.style.left = "7%";
 	} else if (partId === "psu") {
+		zone.style.top = "69%";
+		zone.style.left = "6%";
 	}
 
 	caseSide.appendChild(zone);
@@ -51,7 +54,7 @@ draggableElements.forEach((element) => {
 		offsetX = e.clientX - rect.left;
 		offsetY = e.clientY - rect.top;
 
-		element.style.zIndex = 3;
+		element.style.zIndex = 4;
 	});
 
 	document.addEventListener("mousemove", (e) => {
@@ -74,13 +77,21 @@ draggableElements.forEach((element) => {
 			const elRect = element.getBoundingClientRect();
 			const zoneRect = zone.getBoundingClientRect();
 
-			const elCenterX = elRect.left + elRect.width / 2;
-			const elCenterY = elRect.top + elRect.height / 2;
+			const elCenterX = elRect.left + elRect.width / 3;
+			const elCenterY = elRect.top + elRect.height / 3;
 
-			if (elCenterX >= zoneRect.left && elCenterX <= zoneRect.right && elCenterY >= zoneRect.top && elCenterY <= zoneRect.bottom) {
-				element.style.left = `${zoneRect.left + 5}px`;
-				element.style.top = `${zoneRect.top + 5}px`;
-				element.dataset.snapped = "true";
+			if ((element.id === "cpu" || element.id === "gpu") && moboPlaced == false) {
+				return;
+			} else {
+				if (elCenterX >= zoneRect.left && elCenterX <= zoneRect.right && elCenterY >= zoneRect.top && elCenterY <= zoneRect.bottom) {
+					element.style.left = `${zoneRect.left - 2}px`;
+					element.style.top = `${zoneRect.top + 2}px`;
+					element.dataset.snapped = "true";
+
+					if (element.id === "mobo") {
+						moboPlaced = true;
+					}
+				}
 			}
 		}
 	});
