@@ -1,11 +1,12 @@
-const caseSide = document.getElementById("caseSide");
-const cpu = document.getElementById("cpu");
+const overlay = document.querySelector("#overlay");
+const caseSide = document.querySelector("#caseSide");
+const cpu = document.querySelector("#cpu");
 cpu.zIndex = 2;
-const gpu = document.getElementById("gpu");
+const gpu = document.querySelector("#gpu");
 gpu.zIndex = 2;
-const mobo = document.getElementById("mobo");
+const mobo = document.querySelector("#mobo");
 mobo.zIndex = 1;
-const psu = document.getElementById("psu");
+const psu = document.querySelector("#psu");
 psu.zIndex = 1;
 
 let installed = [];
@@ -28,7 +29,7 @@ function createDragZone(partId) {
 		zone.style.top = `${caseRect.top + caseRect.height * 0.195}px`;
 		zone.style.left = `${caseRect.left + caseRect.width * 0.385}px`;
 	} else if (partId === "gpu") {
-		zone.style.top = `${caseRect.top + caseRect.height * 0.40}px`;
+		zone.style.top = `${caseRect.top + caseRect.height * 0.4}px`;
 		zone.style.left = `${caseRect.left + caseRect.width * 0.02}px`;
 	} else if (partId === "mobo") {
 		zone.style.top = `${caseRect.top + caseRect.height * 0.03}px`;
@@ -106,12 +107,8 @@ draggableElements.forEach((element) => {
 
 					if (installed.length === 4) {
 						setTimeout(() => {
-							document.querySelector("#overlay").style.visiblity = "visible";
-							document.querySelector("#overlay").style.opacity = 1;
-							setTimeout(() => {
-								window.location.replace("power.html");
-							}, 500);
-						}, 500);
+							window.location.replace("power.html");
+						}, 250);
 					}
 				}
 			}
