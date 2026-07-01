@@ -35,8 +35,8 @@ function createDragZone(partId) {
 	const caseRect = caseSide.getBoundingClientRect();
 
 	if (partId === "cpu") {
-		zone.style.top = `${caseRect.top + caseRect.height * 0.195}px`;
-		zone.style.left = `${caseRect.left + caseRect.width * 0.385}px`;
+		zone.style.top = `${caseRect.top + caseRect.height * 0.191}px`;
+		zone.style.left = `${caseRect.left + caseRect.width * 0.381}px`;
 	} else if (partId === "gpu") {
 		zone.style.top = `${caseRect.top + caseRect.height * 0.4}px`;
 		zone.style.left = `${caseRect.left + caseRect.width * 0.02}px`;
@@ -119,9 +119,22 @@ window.addEventListener("load", () => {
 
 						if (installed.length === 4) {
 							/* The container doesnt move to the center and everything needs to fade to black before redirecting to power.html */
-							container.classList.add("moving");
-							container.style.transform = "translate(-50%, -50%)";
-							container.style.left = "25%";
+							container.style.transform = "translate(-25%, -25%)";
+							setTimeout(() => {
+								let redirecting = false;
+
+								if (installed.length === 4 && !redirecting) {
+									redirecting = true;
+									container.style.transform = "translate(-25%, -25%)";
+									setTimeout(() => {
+										overlay.style.opacity = 1;
+										overlay.style.pointerEvents = "auto";
+										setTimeout(() => {
+											window.location.href = "power.html";
+										}, 500);
+									}, 500);
+								}
+							}, 500);
 						}
 					} else {
 						element.style.top = element.top;
