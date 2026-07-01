@@ -16,8 +16,8 @@ let consoleLines = [
 	"Loading project...",
 ];
 
+let loaded = false;
 function titleLoad() {
-    let loaded = false;
     let dotCount = 0;
     let interval = setInterval(() => {
         title.innerHTML += ".";
@@ -26,18 +26,16 @@ function titleLoad() {
             title.innerHTML = "Booting Conner's Portfolio";
             dotCount = 0;
         }
-
-        if (loaded) clearInterval(interval);
     }, 500);
 }
 
 let lineIndex = 0;
 function showRandomLine() {
-	if (lineIndex >= consoleLines.length) {
-		loaded = true;
-		return;
-	}
-
+    if (consoleLines.length === 0) {
+        console.innerHTML += "All systems operational. Booting conOS...";
+        setTimeout(() => {window.location.href = "conos.html"}, 500);
+        return;
+    }
 	let randIndex = Math.floor(Math.random() * consoleLines.length);
 	let line = consoleLines.splice(randIndex, 1)[0];
 
@@ -46,8 +44,9 @@ function showRandomLine() {
 	setTimeout(() => {
 		console.innerHTML += " OK<br>";
 		lineIndex++;
-		setTimeout(showRandomLine, 500);
-	}, 1000);
+		setTimeout(showRandomLine, 100);
+	}, 200);
 }
 
+titleLoad();
 showRandomLine();

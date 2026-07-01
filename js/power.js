@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
         overlay.style.opacity = 1;
         overlay.style.pointerEvents = "auto";
         setTimeout(() => {
-            window.location.href = "bios.html";
+            window.location.href = "boot.html";
         }, 500);
     });
 });
