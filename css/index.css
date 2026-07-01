@@ -7,6 +7,11 @@
     --max-psu-width: calc((var(--max-case-width) / var(--case-width)) * 276);
 }
 
+body {
+    background-image: url("/assets/bg.svg");
+    background-size: cover;
+}
+
 #overlay {
     width: 100%;
     height: 100%;
@@ -29,9 +34,8 @@
     z-index: 0;
     width: 90%;
     max-width: var(--max-case-width);
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+    left: 51%;
+    top: 30px;
 }
 
 .drag-zone {
@@ -52,22 +56,34 @@
     width: 10.5%;
     max-width: var(--max-cpu-width);
     z-index: 2;
+    top: 51.5%;
+    left: 31%;
 }
 
 #gpu {
     width: 80%;
     max-width: var(--max-gpu-width);
     z-index: 2;
+    top: 60.3%;
+    left: 3px;
 }
 
 #mobo {
     width: 61%;
     max-width: var(--max-mobo-width);
     z-index: 1;
+    top: -5px;
+    left: -2px;
 }
 
 #psu {
     width: 41%;
     max-width: var(--max-psu-width);
     z-index: 1;
+    top: 77%;
+    left: 20px;
+}
+
+.moving {
+    transition: all 0.5s ease;
 }

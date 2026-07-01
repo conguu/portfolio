@@ -1,13 +1,22 @@
+const container = document.querySelector("#container");
 const overlay = document.querySelector("#overlay");
 const caseSide = document.querySelector("#caseSide");
 const cpu = document.querySelector("#cpu");
 cpu.zIndex = 2;
+cpu.top = "51.5%";
+cpu.left = "31%";
 const gpu = document.querySelector("#gpu");
 gpu.zIndex = 2;
+gpu.top = "60.3%";
+gpu.left = "3px";
 const mobo = document.querySelector("#mobo");
 mobo.zIndex = 1;
+mobo.top = "-5px";
+mobo.left = "-2px";
 const psu = document.querySelector("#psu");
 psu.zIndex = 1;
+psu.top = "77%";
+psu.left = "20px";
 
 let installed = [];
 
@@ -43,75 +52,83 @@ function createDragZone(partId) {
 	return zone;
 }
 
-draggableElements.forEach((element) => {
-	let isDragging = false;
-	let offsetX = 0;
-	let offsetY = 0;
+window.addEventListener("load", () => {
+	draggableElements.forEach((element) => {
+		let isDragging = false;
+		let offsetX = 0;
+		let offsetY = 0;
 
-	const zone = createDragZone(element.id);
+		const zone = createDragZone(element.id);
 
-	element.addEventListener("mousedown", (e) => {
-		if (element.dataset.snapped === "true") return;
-		isDragging = true;
+		element.addEventListener("mousedown", (e) => {
+			if (element.dataset.snapped === "true") return;
+			isDragging = true;
 
-		const rect = element.getBoundingClientRect();
-		offsetX = e.clientX - rect.left;
-		offsetY = e.clientY - rect.top;
+			const rect = element.getBoundingClientRect();
+			offsetX = e.clientX - rect.left;
+			offsetY = e.clientY - rect.top;
 
-		element.style.zIndex = 4;
-		zone.classList.add("shown");
-	});
+			element.style.zIndex = 4;
+			zone.classList.add("shown");
+		});
 
-	document.addEventListener("mousemove", (e) => {
-		if (!isDragging) return;
-		if (element.dataset.snapped === "true") return;
+		document.addEventListener("mousemove", (e) => {
+			if (!isDragging) return;
+			if (element.dataset.snapped === "true") return;
 
-		const left = e.clientX - offsetX;
-		const top = e.clientY - offsetY;
+			const left = e.clientX - offsetX;
+			const top = e.clientY - offsetY;
 
-		element.style.left = `${left}px`;
-		element.style.top = `${top}px`;
-	});
+			element.style.left = `${left}px`;
+			element.style.top = `${top}px`;
+		});
 
-	document.addEventListener("mouseup", () => {
-		element.style.zIndex = element.zIndex;
+		document.addEventListener("mouseup", () => {
+			element.style.zIndex = element.zIndex;
 
-		if (isDragging) {
-			isDragging = false;
-			zone.classList.remove("shown");
+			if (isDragging) {
+				isDragging = false;
+				zone.classList.remove("shown");
 
-			const elRect = element.getBoundingClientRect();
-			const zoneRect = zone.getBoundingClientRect();
+				const elRect = element.getBoundingClientRect();
+				const zoneRect = zone.getBoundingClientRect();
 
-			const elCenterX = elRect.left + elRect.width / 3;
-			const elCenterY = elRect.top + elRect.height / 3;
+				const elCenterX = elRect.left + elRect.width / 3;
+				const elCenterY = elRect.top + elRect.height / 3;
 
-			if ((element.id === "cpu" || element.id === "gpu") && moboPlaced == false) {
-				return;
-			} else {
-				if (elCenterX >= zoneRect.left && elCenterX <= zoneRect.right && elCenterY >= zoneRect.top && elCenterY <= zoneRect.bottom) {
-					element.style.left = `${zoneRect.left - 2}px`;
-					element.style.top = `${zoneRect.top + 2}px`;
-					element.dataset.snapped = "true";
+				if ((element.id === "cpu" || element.id === "gpu") && moboPlaced == false) {
+					element.style.top = element.top;
+					element.style.left = element.left;
+					return;
+				} else {
+					if (elCenterX >= zoneRect.left && elCenterX <= zoneRect.right && elCenterY >= zoneRect.top && elCenterY <= zoneRect.bottom) {
+						element.style.left = `${zoneRect.left - 2}px`;
+						element.style.top = `${zoneRect.top + 2}px`;
+						element.dataset.snapped = "true";
 
-					if (element.id === "mobo") {
-						moboPlaced = true;
-					}
+						if (element.id === "mobo") {
+							moboPlaced = true;
+						}
 
-					if (element.id === "cpu") {
-						mobo.innerHTML = `<img src="assets/mobo-full.svg" />`;
-						cpu.style.visibility = "hidden";
-					}
+						if (element.id === "cpu") {
+							mobo.innerHTML = `<img src="assets/mobo-full.svg" />`;
+							cpu.style.visibility = "hidden";
+						}
 
-					installed.push(element.id);
+						installed.push(element.id);
 
-					if (installed.length === 4) {
-						setTimeout(() => {
-							window.location.replace("power.html");
-						}, 250);
+						if (installed.length === 4) {
+							/* The container doesnt move to the center and everything needs to fade to black before redirecting to power.html */
+							container.classList.add("moving");
+							container.style.transform = "translate(-50%, -50%)";
+							container.style.left = "25%";
+						}
+					} else {
+						element.style.top = element.top;
+						element.style.left = element.left;
 					}
 				}
 			}
-		}
+		});
 	});
 });
