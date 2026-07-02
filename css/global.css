@@ -24,19 +24,33 @@ body {
 body.high-contrast,
 body.high-contrast *,
 body.high-contrast div {
-    background-color: #000000 !important;
-    color: #00ff00 !important;
     border-color: #ffffff !important;
-    background-image: none !important;
 }
 
 body.high-contrast a {
-    color: #ffff00 !important;
+    color: #ff0000 !important;
     text-decoration: underline !important;
 }
 
-#window.high-contrast {
+body.high-contrast #window {
     border: #ffffff 1px solid !important;
+    background-color: black;
+    color: white;
+}
+
+body.high-contrast #window-bar {
+    border-bottom: white 1px solid !important;
+    background-color: rgb(255, 255, 255);
+    color: black;
+}
+
+body.high-contrast #window-close {
+    color: black;
+}
+
+body.high-contrast #window-close:hover {
+    color: white;
+    background-color:red;
 }
 
 /* Large text mode */
@@ -58,8 +72,6 @@ body.large-text h2 {
     font-size: 300% !important;
     font-weight: bolder !important;
 }
-
-
 
 /* Global Sprites */
 .sprite {
@@ -139,6 +151,10 @@ body.large-text h2 {
     color: white;
     font-size: 1.2rem;
     cursor: pointer;
+}
+
+#window-close:hover {
+    background-color: rgb(255, 42, 42);
 }
 
 #window-frame {

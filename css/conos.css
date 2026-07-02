@@ -123,6 +123,12 @@ body {
     border-top: rgba(255, 255, 255, 0.2) 1px solid;
 }
 
+body.high-contrast #taskbar {
+    background: black !important;
+    backdrop-filter: blur(0);
+    border-top: white 1px solid !important;
+}
+
 .tb-item {
     position: relative;
     display: flex;
@@ -168,6 +174,6 @@ body {
     position: absolute;
     text-align: right;
     width: fit-content;
-    right: 15px;
+    right: 30px;
     pointer-events: none;
 }
