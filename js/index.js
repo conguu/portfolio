@@ -2,6 +2,7 @@ const container = document.querySelector("#container");
 const overlay = document.querySelector("#overlay");
 const caseSide = document.querySelector("#caseSide");
 const cpu = document.querySelector("#cpu");
+const help = document.querySelector("#help");
 cpu.zIndex = 2;
 cpu.top = "51.5%";
 cpu.left = "31%";
@@ -118,14 +119,13 @@ window.addEventListener("load", () => {
 						installed.push(element.id);
 
 						if (installed.length === 4) {
-							/* The container doesnt move to the center and everything needs to fade to black before redirecting to power.html */
 							container.style.transform = "translate(-25%, -25%)";
 							setTimeout(() => {
 								let redirecting = false;
 
 								if (installed.length === 4 && !redirecting) {
 									redirecting = true;
-									container.style.transform = "translate(-25%, -25%)";
+									container.style.transform = "translate(-40%, -25%)";
 									setTimeout(() => {
 										overlay.style.opacity = 1;
 										overlay.style.pointerEvents = "auto";
@@ -145,3 +145,8 @@ window.addEventListener("load", () => {
 		});
 	});
 });
+
+help.classList.add("visible");
+setTimeout(() => {
+	help.classList.remove("visible");
+}, 6000);

@@ -1,5 +1,5 @@
 body {
-    background-image: url("/assets/bg-top2.svg");
+    background-image: url("/assets/bg-top.svg");
     background-size: cover;
 }
 
@@ -16,7 +16,7 @@ body {
 #caseTop {
     width: 100%;
     height: auto;
-    max-width: 750px;
+    max-width: 875px;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
@@ -29,4 +29,20 @@ body {
     left: 24.8%;
     top: 47.9%;
     transform: translate(-50%, -50%);
+    border-radius: 16px;
+    transition: border 0.5s ease;
+}
+
+@keyframes borderGlow {
+    0% {
+        border: none;
+    }
+
+    50% {
+        border: rgba(255, 255, 255, 0.5) 4px solid;
+    }
+
+    100% {
+        border: none;
+    }
 }

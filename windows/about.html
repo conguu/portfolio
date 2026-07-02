@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>About</title>
+		<link rel="stylesheet" href="/css/global.css" />
+	</head>
+
+	<style>
+		body {
+			background-color: #a1aeea;
+			padding: 15px;
+		}
+
+		.content {
+			display: grid;
+			grid-template-columns: 3fr 1fr;
+		}
+
+		h1 {
+			font-size: 40px;
+		}
+
+        h2 {
+            font-weight: normal;
+            font-size: 32.5px;
+            margin-bottom: 10px;
+        }
+
+		p {
+			font-size: 30px;
+		}
+
+		img {
+			margin-left: auto;
+			width: 100%;
+			border-radius: 8px;
+			box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.75);
+			transition: all 0.4s ease;
+		}
+
+		.langs {
+			display: grid;
+			grid-template-columns: repeat(2, 300px);
+			grid-template-rows: repeat(2, fit-content);
+			padding: 10px;
+			gap: 10px;
+			font-size: 30px;
+		}
+
+		.langs div {
+			background-color: #b6bfe7;
+			border-radius: 8px;
+			text-align: center;
+			padding: 15px;
+			font-weight: 600;
+			box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.35);
+			transition: all 0.1s ease;
+		}
+
+		.langs div:hover,
+		img:hover {
+			transform: scale(1.05);
+		}
+	</style>
+
+	<body>
+		<div class="content">
+			<div style="padding-right: 10px;">
+				<h1><strong>I'm Conner Guillerman.</strong></h1>
+				<h2>I develop websites and games, repair hardware, design 2D graphics, and animate.</h2>
+
+				<br />
+				<h1>Languages:</h1>
+				<div class="langs">
+					<div>HTML & CSS</div>
+					<div>JavaScript</div>
+					<div>Python</div>
+					<div>SQL</div>
+				</div>
+			</div>
+
+			<div class="img">
+				<img src="/assets/headshot.jpg" alt="Headshot" />
+			</div>
+		</div>
+
+	    <script src="/js/global.js"></script>
+	</body>
+</html>

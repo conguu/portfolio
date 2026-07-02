@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Settings</title>
+        <link rel="stylesheet" href="/css/global.css">
+    </head>
+
+    <style>
+        body {
+            color:white;
+            padding: 0 15px;
+        }
+
+        h2 {
+            font-size: 40px;
+        }
+
+        .setting-item {
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        .setting-item input {
+            transform: scale(1.5);
+            margin-right: 10px;
+            cursor: pointer;
+        }
+    </style>
+
+    <body>
+        <h2>Settings</h2>
+
+        <div class="setting-item">
+            <label><input type="checkbox" id="hc-toggle"> High Contrast Mode</label>
+        </div>
+
+        <div class="setting-item">
+            <label><input type="checkbox" id="lt-toggle"> Large Text</label>
+        </div>
+    </body>
+
+    <script>
+        const hcCheck = document.getElementById('hc-toggle');
+        const ltCheck = document.getElementById('lt-toggle');
+
+        hcCheck.checked = localStorage.getItem('highContrast') === 'true';
+        ltCheck.checked = localStorage.getItem('largeText') === 'true';
+
+        function applyAccessibility() {
+            const hc = hcCheck.checked;
+            const lt = ltCheck.checked;
+
+            localStorage.setItem('highContrast', hc);
+            localStorage.setItem('largeText', lt);
+
+            document.body.classList.toggle('high-contrast', hc);
+            document.body.classList.toggle('large-text', lt);
+
+            if (window.parent && window.parent.document.body) {
+                window.parent.document.body.classList.toggle('high-contrast', hc);
+                window.parent.document.body.classList.toggle('large-text', lt);
+            }
+        }
+
+        hcCheck.addEventListener('change', applyAccessibility);
+        ltCheck.addEventListener('change', applyAccessibility);
+
+        applyAccessibility();
+    </script>
+    <script src="/js/global.js"></script>
+    <script src="/js/conos.js"></script>
+</html>

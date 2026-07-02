@@ -1,6 +1,5 @@
 let title = document.querySelector("#title");
 let console = document.querySelector("#console-lines");
-title.innerHTML = "Booting Conner's Portfolio";
 
 let consoleLines = [
 	"Rendering text...",
@@ -16,17 +15,20 @@ let consoleLines = [
 	"Loading project...",
 ];
 
-let loaded = false;
 function titleLoad() {
     let dotCount = 0;
     let interval = setInterval(() => {
         title.innerHTML += ".";
         dotCount++;
         if (dotCount > 3) {
-            title.innerHTML = "Booting Conner's Portfolio";
+            title.innerHTML = "Starting Conner's Portfolio";
             dotCount = 0;
         }
     }, 500);
+}
+
+function randomDelay(min, max) {
+	return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 let lineIndex = 0;
@@ -44,9 +46,9 @@ function showRandomLine() {
 	setTimeout(() => {
 		console.innerHTML += " OK<br>";
 		lineIndex++;
-		setTimeout(showRandomLine, 100);
-	}, 200);
+		setTimeout(showRandomLine, 150);
+	}, randomDelay(0, 900));
 }
 
 titleLoad();
-showRandomLine();
+setTimeout(showRandomLine, 300);

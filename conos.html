@@ -5,10 +5,41 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Home - Conner's Portfolio</title>
         <link rel="stylesheet" href="css/global.css">
-        <link rel="stylesheet" href="css/bios.css">
+        <link rel="stylesheet" href="css/conos.css">
     </head>
 
     <body>
-	    <script src="js/bios.js"></script>
+        <div id="boot">
+            <img id="logo" src="assets/conos.svg">
+            <img id="loading" src="assets/loading.svg">
+        </div>
+
+        <div id="os">
+            <div class="background">
+                <img src="assets/conos-bg.svg">
+            </div>
+
+            <div id="desktop"></div>
+
+            <div id="taskbar">
+                <div id="settings" class="tb-item" data-label="settings">
+                    <img src="assets/apps/settings.svg">
+                    <span class="tb-tooltip">Settings</span>
+                </div>
+
+                <div id="clock" alt="Date & Time"></div>
+            </div>
+
+            <div id="window">
+                <div id="window-bar">
+                    <span id="window-title"></span>
+                    <button id="window-close">✕</button>
+                </div>
+                <iframe id="window-frame"></iframe>
+            </div>
+        </div>
+
+	    <script src="js/conos.js"></script>
+	    <script src="js/global.js"></script>
     </body>
 </html>

@@ -1,0 +1,173 @@
+body {
+    background-color: rgb(0, 0, 0);
+    user-select: none;
+}
+
+/* Boot screen */
+#boot {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 20;
+    gap: 25px;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    top: 150%;
+    left: 50%;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    transition: top 0.8s ease, opacity 0.7s ease-in-out;
+}
+
+#boot.visible {
+    transition: top 0.7s ease, opacity 0.8s ease-in-out;
+    top: 50%;
+    opacity: 1;
+}
+
+#logo {
+    width: 20%;
+}
+
+#loading {
+    width: 5%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* conOS */
+#os {
+    position:absolute;
+    visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    color: white;
+    transition: opacity 0.8s ease-in-out;
+}
+
+.background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+#desktop {
+    width: 100%;
+    height: 92.5%;
+    z-index: 1;
+    display: grid;
+    grid-template-rows: repeat(3, fit-content);
+    grid-template-columns: repeat(4, fit-content);
+    gap: 10px;
+    padding: 10px 40px;
+}
+
+.desk-app {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    padding: 10px;
+    cursor: pointer;
+    width: 7rem;
+    height: fit-content;
+}
+
+.desk-app img {
+    margin: 0;
+    padding: 0;
+    width: 4rem;
+    height: auto;
+}
+
+.desk-app p {
+    margin: 0;
+    padding: 0;
+    font-size: 1.25rem;
+}
+
+.desk-app:hover, .tb-item:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+#taskbar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    bottom: 0;
+    width: 100%;
+    height: 7.5%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    border-top: rgba(255, 255, 255, 0.2) 1px solid;
+}
+
+.tb-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    width: 3.3rem;
+    height: 3.3rem;
+    cursor: pointer;
+    transform: translateX(-50%);
+}
+
+.tb-item img {
+    width: 4rem;
+    height: 4rem;
+    pointer-events: none;
+}
+
+.tb-tooltip {
+    position: absolute;
+    bottom: 110%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    padding: 5px 10px;
+    border-radius: 8px;
+    margin-bottom: 5px;
+    font-size: 1.3rem;
+    text-align: center;
+    transition: top 0.5s ease, opacity 0.5s ease;
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.tb-item:hover .tb-tooltip {
+    opacity: 1;
+}
+
+#clock {
+    position: absolute;
+    text-align: right;
+    width: fit-content;
+    right: 15px;
+    pointer-events: none;
+}
