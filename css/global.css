@@ -54,23 +54,24 @@ body.high-contrast #window-close:hover {
 }
 
 /* Large text mode */
-body.large-text div,
-body.large-text span,
-body.large-text a {
-    font-size: 110% !important;
+body.large-text * {
     font-weight: bolder !important;
 }
 
-body.large-text p,
+body.large-text div,
+body.large-text span,
+body.large-text a,
+body.large-text p {
+    font-size: 110% !important;
+}
+
 body.large-text label {
     font-size: 175% !important;
-    font-weight: bolder !important;
 }
 
 body.large-text h1,
 body.large-text h2 {
     font-size: 300% !important;
-    font-weight: bolder !important;
 }
 
 /* Global Sprites */
