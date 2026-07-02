@@ -125,7 +125,7 @@ window.addEventListener("load", () => {
 
 								if (installed.length === 4 && !redirecting) {
 									redirecting = true;
-									container.style.transform = "translate(-40%, -25%)";
+									container.style.transform = "translate(-25%, -25%)";
 									setTimeout(() => {
 										overlay.style.opacity = 1;
 										overlay.style.pointerEvents = "auto";
